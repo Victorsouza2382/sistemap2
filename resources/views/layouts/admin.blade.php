@@ -48,8 +48,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="hidden-xs">Victor de Souza </span>
-                    <i class="fas fa-angle-down"></i>
+                    {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -70,6 +69,17 @@
                   </li>
                 </ul>
               </li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Sair') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
 
             </ul>
           </div>
@@ -100,13 +110,13 @@
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i>
-                <span>Compras</span>
-                 <i class="fa fa-angle-left pull-right"></i>
+                  <i class="fas fa-user-friends"></i>
+                <span>Pessoas</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="compras/entrada"><i class="fa fa-circle-o"></i> Entradas</a></li>
-                <li><a href="compras/fornecedor"><i class="fa fa-circle-o"></i> Fornecedores</a></li>
+                <li><a href="/clientes"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="/fornecedores"><i class="fa fa-circle-o"></i> Fornecedores</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -117,9 +127,20 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="vendas/venda"><i class="fa fa-circle-o"></i> Vendas</a></li>
-                <li><a href="vendas/cliente"><i class="fa fa-circle-o"></i> Clientes</a></li>
+
               </ul>
             </li>
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fas fa-store-alt fa-1x"></i>
+                      <span>Filiais</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Lojas</a></li>
+
+                  </ul>
+              </li>
 
             <li class="treeview">
               <a href="#">
@@ -131,19 +152,6 @@
 
               </ul>
             </li>
-             <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ajuda</span>
-                <small class="label pull-right bg-red">PDF</small>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Sobre...</span>
-                <small class="label pull-right bg-yellow">IT</small>
-              </a>
-            </li>
-
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -177,6 +185,7 @@
                       <div class="col-md-12">
                               <!--Conteudo-->
                               @yield('conteudo')
+
                               <!--Fim Conteudo-->
                            </div>
                         </div>
@@ -195,7 +204,7 @@
         <div class="pull-right hidden-xs">
           AdminLTE
         </div>
-        <strong>Copyright &copy; 2020 <a href="victorsouza2382.github.io">Victor Souza</a>.</strong> Todos os direitos reservados.
+        <strong>Copyright &copy; 2020 <a href="http://victorsouza2382.github.io">Victor Souza</a>.</strong> Todos os direitos reservados.
       </footer>
 
 

@@ -14,7 +14,8 @@ class FornecedoresController extends Controller
      */
     public function index()
     {
-        //
+    $fornecedor = fornecedores::all();
+    return view('fornecedores.fornecedores');
     }
 
     /**
