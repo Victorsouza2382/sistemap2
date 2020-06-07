@@ -10,20 +10,23 @@ class CategoriasController extends Controller
 
     public function index()
     {
-        $categoria = Categorias::all();
-        return view('categorias.categorias');
+        $categorias = Categorias::all();
+        return view('categorias.index',compact('categorias'));
     }
 
 
     public function create()
     {
-
+        return view('categorias.form');
     }
 
 
     public function store(Request $request)
     {
-        //
+
+        $categoria = new categorias($request->all());
+        $categoria->save();
+        return redirect('/categorias');
     }
 
 

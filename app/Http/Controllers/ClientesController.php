@@ -10,25 +10,22 @@ class ClientesController extends Controller
 
     public function index()
     {
-        $cliente = clientes::all();
-        return view('clientes.clientes');
+        $clientes = clientes::all();
+        return view('clientes.index', compact('clientes'));
     }
 
 
     public function create()
     {
-        //
+        return view('clientes.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+
+        $cliente = new clientes($request->all());
+        $cliente->save();
+        return redirect('/clientes');
     }
 
     /**

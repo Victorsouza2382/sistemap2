@@ -7,44 +7,30 @@ use Illuminate\Http\Request;
 
 class FornecedoresController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-    $fornecedor = fornecedores::all();
-    return view('fornecedores.fornecedores');
+    $fornecedores = Fornecedores::all();
+    return view('fornecedores.index', compact('fornecedores'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('fornecedores.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+
+        $fornecedor = new Fornecedores($request->all());
+        $fornecedor->save();
+        return redirect('/fornecedores');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Fornecedores  $fornecedores
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function show(Fornecedores $fornecedores)
     {
         //

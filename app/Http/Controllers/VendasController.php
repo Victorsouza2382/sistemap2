@@ -7,14 +7,11 @@ use Illuminate\Http\Request;
 
 class VendasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $venda = Vendas::all();
+        return view('vendas.index');
     }
 
     /**
@@ -24,7 +21,7 @@ class VendasController extends Controller
      */
     public function create()
     {
-        //
+        return view('vendas.form');
     }
 
     /**

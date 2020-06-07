@@ -14,29 +14,23 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        $produto = Produtos::all();
-        return view('produtos.produtos');
+      $produtos = produtos::all();
+       return view('produtos.index',compact('produtos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('produtos.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        ddd($request);
+        $produto = new produtos($request->all());
+        $produto->save();
+        return redirect('/produtos');
     }
 
     /**
