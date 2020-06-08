@@ -15,6 +15,10 @@ class CreateVendasTable extends Migration
             $table->float('preco');
             $table->float('total_venda');
             $table->date('dataCompra');
+            $table->unsignedBigInteger('cliente_id');
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->unsignedBigInteger('produto_id');
+            $table->foreign('produto_id')->references('id')->on('produtos');
             $table->timestamps();
         });
     }

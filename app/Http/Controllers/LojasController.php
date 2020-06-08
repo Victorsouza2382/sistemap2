@@ -7,77 +7,45 @@ use Illuminate\Http\Request;
 
 class LojasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $lojas = Lojas::all();
+        return view('lojas.index', compact('lojas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('lojas.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $lojas = new lojas($request->all());
+        $lojas->save();
+        return redirect('/lojas');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Lojas  $lojas
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Lojas $lojas)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Lojas  $lojas
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Lojas $lojas)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Lojas  $lojas
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Lojas $lojas)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Lojas  $lojas
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Lojas $lojas)
     {
         //

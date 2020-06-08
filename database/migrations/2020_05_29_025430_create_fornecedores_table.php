@@ -17,10 +17,13 @@ class CreateFornecedoresTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome', 50);
             $table->string('sobrenome', 100);
+            $table->char('cep',12);
             $table->string('endereco');
             $table->string('email');
             $table->char('telefone');
             $table->char('cpf');
+            $table->unsignedBigInteger('loja_id');
+            $table->foreign('loja_id')->references('id')->on('lojas');
             $table->timestamps();
         });
     }

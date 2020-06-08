@@ -14,8 +14,8 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-      $produtos = produtos::all();
-       return view('produtos.index',compact('produtos'));
+        $produtos = produtos::all();
+        return view('produtos.index', compact('produtos'));
     }
 
 
@@ -27,8 +27,22 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
-        ddd($request);
+
         $produto = new produtos($request->all());
+
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
+            $aValidos =[
+                'image/jpeg',
+                'image/png',
+                'image/gif',
+                'image/bmp'
+            ];
+            if(in_array($request->file('imagem')->getMimeType(),$aValidos)){
+                $imagem = $request->file('imagem')->store('imagens');
+                $produto->imagem = $imagem;
+            }
+        }
+
         $produto->save();
         return redirect('/produtos');
     }
@@ -36,7 +50,7 @@ class ProdutosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Produtos  $produtos
+     * @param \App\Produtos $produtos
      * @return \Illuminate\Http\Response
      */
     public function show(Produtos $produtos)
@@ -47,7 +61,7 @@ class ProdutosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Produtos  $produtos
+     * @param \App\Produtos $produtos
      * @return \Illuminate\Http\Response
      */
     public function edit(Produtos $produtos)
@@ -58,8 +72,8 @@ class ProdutosController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Produtos  $produtos
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Produtos $produtos
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Produtos $produtos)
@@ -70,7 +84,7 @@ class ProdutosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Produtos  $produtos
+     * @param \App\Produtos $produtos
      * @return \Illuminate\Http\Response
      */
     public function destroy(Produtos $produtos)

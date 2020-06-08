@@ -19,6 +19,10 @@ class CreateProdutosTable extends Migration
             $table->string('descricao');
             $table->char('quantidade');
             $table->float('preco');
+            $table->unsignedBigInteger('categoria_id');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->unsignedBigInteger('loja_id');
+            $table->foreign('loja_id')->references('id')->on('lojas');
             $table->timestamps();
         });
     }

@@ -6,15 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateLojasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('lojas', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('descricao')->nullable();
             $table->timestamps();
         });
     }

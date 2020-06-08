@@ -8,7 +8,9 @@
                     <input type="text" class="form-control" id="nome" name="nome"  style="width: 150%">
                     <label for="sobrenome">sobrenome</label>
                     <input type="text" class="form-control" id="sobrenome" name="sobrenome"  style="width: 150%">
-                    <label for="endereco">endereco</label>
+                    <label>Cep</label>
+                    <input type="text" class="form-control input-sm" id="cep" name="cep" style="width: 150%">
+                    <label for="endereco">Endereço</label>
                     <input type="text" class="form-control" id="endereco" name="endereco"  style="width: 150%">
                     <label for="email">email</label>
                     <input type="text" class="form-control" id="email" name="email"  style="width: 150%">

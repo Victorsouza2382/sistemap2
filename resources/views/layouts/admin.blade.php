@@ -65,7 +65,7 @@
                             </div>
                         </li>
                     </ul>
-,,
+                    ,,
                     <li>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
@@ -121,7 +121,6 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/vendas"><i class="fa fa-circle-o"></i> Vendas</a></li>
-
                     </ul>
                 </li>
                 <li class="treeview">
@@ -131,7 +130,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Lojas</a></li>
+                        <li><a href="/lojas"><i class="fa fa-circle-o"></i> Lojas</a></li>
 
                     </ul>
                 </li>
@@ -142,7 +141,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="configuracao/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                        <li><a href="/usuarios"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                     </ul>
                 </li>
             </ul>

@@ -16,5 +16,6 @@ Auth::routes();
      'lojas' => 'LojasController',
      'vendas' => 'VendasController',
      'fornecedores' => 'FornecedoresController',
-     'imagens' => 'ImagensController'
+     'imagens' => 'ImagensController',
+     'usuarios' => 'UserController'
  ]);

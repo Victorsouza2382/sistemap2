@@ -30,16 +30,21 @@
                 <td>{{$produto->descricao}}</td>
                 <td>{{$produto->quantidade}}</td>
                 <td>{{$produto->preco}}</td>
-                <td><img width="80" height="80" src="">
-
+                <td>
+                    @if($produto->imagem)
+                        <img width="90px" height="90px" src="{{asset('storage/' . $produto->imagem)}}"
+                             alt="{{$produto->nome}}">
+                    @endif
                 </td>
                 <td></td>
-                <td>
+                <td><br>
                     <span class="btn btn-warning btn-xs">
 				    <span class="fas fa-edit"></span>
 			        </span>
+
                 </td>
-                <td><span class="btn btn-danger btn-xs">
+                <td><br>
+                    <span class="btn btn-danger btn-xs">
 				<span class="fas fa-trash"></span>
 			        </span>
                 </td>
