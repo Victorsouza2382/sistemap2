@@ -45,17 +45,6 @@
 @endsection
 
 @section('js')
-    <script>
-        $.ajax({
-            url: "/getAbitro",
-            type: "GET",
-        }).done(function (response) {
-            $("#arbitro").empty();
-            $("#arbitro").append('<option value="">Selecione</option>');
-            response.forEach(function (key) {
-                let selected = '';
-                $("#arbitro").append("<option " + selected + "  value='" + key.id + "'>" + key.nome + "</option>");
-                $("#arbitro").removeAttr("disabled");
-            });
-        });
+
+
 @stop

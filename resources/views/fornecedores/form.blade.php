@@ -10,8 +10,8 @@
                     <input type="text" class="form-control" id="sobrenome" name="sobrenome"  style="width: 150%">
                     <label>Cep</label>
                     <input type="text" class="form-control input-sm" id="cep" name="cep" style="width: 150%">
-                    <label for="bairro">Bairro</label>
-                    <input type="text" class="form-control" id="bairro" name="bairro"  style="width: 150%">
+                    <label for="bairro">Endereco</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco"  style="width: 150%">
                     <label for="email">email</label>
                     <input type="text" class="form-control" id="email" name="email"  style="width: 150%">
                     <label for="telefone">telefone</label>
@@ -27,3 +27,27 @@
         </div>
     </div>
 @endsection
+
+@section('js')
+    <script>
+
+
+        $(function () {
+
+            $('#cep').change(function () {
+                cep = $('#cep').val()
+
+
+                $.ajax({
+                    url: 'https://viacep.com.br/ws/' + cep + '/json/',
+                    success: function (dados) {
+                        $('#endereco').val(dados.logradouro)
+
+                    }
+
+                })
+            })
+
+        });
+    </script>
+    @endsection

@@ -7,11 +7,12 @@
                     <label>Nome</label>
                     <input type="text" class="form-control input-sm" id="nome" name="nome" style="width: 150%">
                     <label>Sobrenome</label>
-                    <input type="text" class="form-control input-sm" id="sobrenome" name="sobrenome" style="width: 150%">
+                    <input type="text" class="form-control input-sm" id="sobrenome" name="sobrenome"
+                           style="width: 150%">
                     <label>Cep</label>
                     <input type="text" class="form-control input-sm" id="cep" name="cep" style="width: 150%">
-                    <label>Bairro</label>
-                    <input type="text" class="form-control input-sm" id="bairro" name="bairro" style="width: 150%">
+                    <label>Endereco</label>
+                    <input type="text" class="form-control input-sm" id="endereco" name="endereco" style="width: 150%">
                     <label>Email</label>
                     <input type="email" class="form-control input-sm" id="email" name="email" style="width: 150%">
                     <label>Telefone</label>
@@ -27,8 +28,29 @@
     </div>
 @endsection
 @section('js')
+    <script>
 
-    @endsection
+
+        $(function () {
+
+            $('#cep').change(function () {
+                cep = $('#cep').val()
+
+
+                $.ajax({
+                    url: 'https://viacep.com.br/ws/' + cep + '/json/',
+                    success: function (dados) {
+                        $('#endereco').val(dados.logradouro)
+
+                    }
+
+                })
+            })
+
+        });
+    </script>
+
+@endsection
 
 
 
