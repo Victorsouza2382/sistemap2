@@ -18,38 +18,24 @@
             <div class="table-responsive">
                 <table class="table table-hover table-condensed table-bordered" style="text-align: center;">
                     <caption><label>Vendas</label></caption>
+                    <thead>
                     <tr>
                         <td>Código</td>
                         <td>Data</td>
                         <td>Cliente</td>
-                        <td>Total da Compra</td>
-                        <td>Comprovante</td>
-                        <td>Relatório</td>
+                        <td>Valor da Compra</td>
                     </tr>
-
+                    </thead>
+                    <tdbody>
+                        @foreach($vendas as $venda)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-
-                        </td>
-                        <td>
-
-                        </td>
-                        <td>
-                            <a href="#"
-                               class="btn btn-primary btn-sm">
-                                Comprovante <span class="fas fa-file-pdf-o"></span>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#"
-                               class="btn btn-primary btn-sm">
-                                Relatório <span class="fas fa-file-pdf-o" aria-hidden="true"></span>
-                            </a>
-                        </td>
+                        <td>{{$venda->id}}</td>
+                        <td>{{$venda->created_at}}</td>
+                        <td>{{$venda->cliente_id->nome}}</td>
+                        <td>{{$venda->total_venda}}</td>
                     </tr>
-
+                        @endforeach
+                    </tdbody>
                 </table>
             </div>
         </div>

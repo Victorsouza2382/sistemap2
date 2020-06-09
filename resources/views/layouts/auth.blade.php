@@ -18,11 +18,6 @@
     <link rel="apple-touch-icon" href="{{asset('img/apple-touch-icon.png')}}">
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}">
     <script src="https://kit.fontawesome.com/778c80b037.js" crossorigin="anonymous"></script>
-    <script
-        src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
-
 
 
 </head>
@@ -48,17 +43,6 @@
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Sair') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-
                 </ul>
             </div>
         </nav>
@@ -77,55 +61,20 @@
                     <a href="#">
                         <i class="fa fa-laptop"></i>
                         <span>Estoque</span>
-                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/produtos"><i class="fa fa-circle-o"></i> Produtos</a></li>
-                        <li><a href="/categorias"><i class="fa fa-circle-o"></i> Categorias</a></li>
-                    </ul>
                 </li>
 
                 <li class="treeview">
                     <a href="#">
                         <i class="fas fa-user-friends"></i>
                         <span>Pessoas</span>
-                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/clientes"><i class="fa fa-circle-o"></i> Clientes</a></li>
-                        <li><a href="/fornecedores"><i class="fa fa-circle-o"></i> Fornecedores</a></li>
-                    </ul>
                 </li>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Vendas</span>
-                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/vendas"><i class="fa fa-circle-o"></i> Vendas</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fas fa-store-alt fa-1x"></i>
-                        <span>Filiais</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/lojas"><i class="fa fa-circle-o"></i> Lojas</a></li>
-
-                    </ul>
-                </li>
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-folder"></i> <span>Login</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/usuarios"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                    </ul>
                 </li>
             </ul>
         </section>
@@ -160,9 +109,7 @@
                                 @yield('conteudo')
 
                                 <!--Fim Conteudo-->
-
                                 </div>
-
                             </div>
                         </div><!-- /.box -->
                     </div>
@@ -182,12 +129,16 @@
     direitos reservados.
 </footer>
 
-@yield('js')
+
 <!-- jQuery -->
 <script src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
 <!-- Bootstrap  -->
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('js/app.min.js')}}"></script>
+<!-- Ajax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"
+        integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i"
+        crossorigin="anonymous"></script>
 </body>
 </html>

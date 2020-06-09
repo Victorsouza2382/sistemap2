@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class LojaSeeder extends Seeder
+class CategoriasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,8 @@ class LojaSeeder extends Seeder
      */
     public function run()
     {
-        App\Lojas::create([
-            'nome' => "Ceilandia",
-            'descricao' => "DistribuidoraVictor",
+        App\Categorias::create([
+            'nome_categoria' => "Bebidas",
         ]);
     }
 }

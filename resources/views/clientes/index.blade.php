@@ -34,14 +34,10 @@
             <td>{{$cliente->telefone}}</td>
             <td>{{$cliente->cpf}}</td>
             <td>
-			<span class="btn btn-warning btn-xs">
-				<span class="fas fa-edit"></span>
-			</span>
+                <a href="categorias/editar/{{$cliente->id}}" class="btn btn-sm btn-warning">Editar</a>
             </td>
             <td>
-			<span class="btn btn-danger btn-xs">
-				<span class="fas fa-trash"></span>
-			</span>
+                <a href="categorias/apagar/{{$cliente->id}}" class="btn btn-sm btn-danger">Apagar</a>
             </td>
         </tr>
         @endforeach

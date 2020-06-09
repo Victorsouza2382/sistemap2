@@ -10,37 +10,25 @@ class VendasController extends Controller
 
     public function index()
     {
-        $venda = Vendas::all();
-        return view('vendas.index');
+        $vendas = Vendas::all();
+        return view('vendas.index',compact('vendas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('vendas.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $venda = new Vendas($request->all());
+        $venda->save();
+        return redirect('/vendas');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Vendas  $vendas
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Vendas $vendas)
     {
         //

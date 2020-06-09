@@ -68,8 +68,12 @@ class ClientesController extends Controller
      * @param  \App\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clientes $clientes)
+    public function destroy($id)
     {
-        //
+        $cliente = Categorias::find($id);
+        if (isset( $cliente)){
+            $cliente->delete();
+        }
+        return redirect('/clientes');
     }
 }

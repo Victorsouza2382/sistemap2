@@ -33,17 +33,29 @@
                     <td>{{$fornecedor->telefone}}</td>
                     <td>{{$fornecedor->cpf}}</td>
                     <td>
-			<span class="btn btn-warning btn-xs">
-				<span class="fas fa-edit"></span>
-			</span>
+                        <a href="categorias/editar/{{$fornecedor->id}}" class="btn btn-sm btn-warning">Editar</a>
                     </td>
                     <td>
-			<span class="btn btn-danger btn-xs">
-				<span class="fas fa-trash"></span>
-			</span>
+                        <a href="categorias/apagar/{{$fornecedor->id}}" class="btn btn-sm btn-danger">Apagar</a>
                     </td>
                 </tr>
             @endforeach
         </tdbody>
     </table>
 @endsection
+
+@section('js')
+    <script>
+        $.ajax({
+            url: "/getAbitro",
+            type: "GET",
+        }).done(function (response) {
+            $("#arbitro").empty();
+            $("#arbitro").append('<option value="">Selecione</option>');
+            response.forEach(function (key) {
+                let selected = '';
+                $("#arbitro").append("<option " + selected + "  value='" + key.id + "'>" + key.nome + "</option>");
+                $("#arbitro").removeAttr("disabled");
+            });
+        });
+@stop

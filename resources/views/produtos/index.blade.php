@@ -38,15 +38,11 @@
                 </td>
                 <td></td>
                 <td><br>
-                    <span class="btn btn-warning btn-xs">
-				    <span class="fas fa-edit"></span>
-			        </span>
-
+                <td>
+                    <a href="categorias/editar/{{$produto->id}}" class="btn btn-sm btn-warning">Editar</a>
                 </td>
-                <td><br>
-                    <span class="btn btn-danger btn-xs">
-				<span class="fas fa-trash"></span>
-			        </span>
+                <td>
+                    <a href="categorias/apagar/{{$produto->id}}" class="btn btn-sm btn-danger">Apagar</a>
                 </td>
             </tr>
         @endforeach

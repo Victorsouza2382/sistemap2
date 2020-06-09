@@ -65,8 +65,12 @@ class FornecedoresController extends Controller
      * @param  \App\Fornecedores  $fornecedores
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fornecedores $fornecedores)
+    public function destroy($id)
     {
-        //
+        $fornecedor = Fornecedores::find($id);
+        if (isset($fornecedor)){
+            $fornecedor->delete();
+        }
+        return redirect('/fornecedores');
     }
 }

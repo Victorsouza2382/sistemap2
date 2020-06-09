@@ -10,8 +10,8 @@
                     <input type="text" class="form-control input-sm" id="sobrenome" name="sobrenome" style="width: 150%">
                     <label>Cep</label>
                     <input type="text" class="form-control input-sm" id="cep" name="cep" style="width: 150%">
-                    <label>Endereço</label>
-                    <input type="text" class="form-control input-sm" id="endereco" name="endereco" style="width: 150%">
+                    <label>Bairro</label>
+                    <input type="text" class="form-control input-sm" id="bairro" name="bairro" style="width: 150%">
                     <label>Email</label>
                     <input type="email" class="form-control input-sm" id="email" name="email" style="width: 150%">
                     <label>Telefone</label>
@@ -26,3 +26,12 @@
         </div>
     </div>
 @endsection
+@section('js')
+
+    @endsection
+
+
+
+
+
+

@@ -35,20 +35,33 @@ class CategoriasController extends Controller
         //
     }
 
-    public function edit(Categorias $categorias)
+    public function edit($id)
     {
-        //
+        $categoria = Categorias::find($id);
+        if (isset($categoria)){
+            return view('/categorias.edit', compact('categoria'));
+        }
+        return redirect('/categorias');
     }
 
 
-    public function update(Request $request, Categorias $categorias)
+    public function update(Request $request, $id)
     {
-        //
+        $categoria = Categorias::find($id);
+        if (isset($categoria)){
+            $categoria->nome_categoria = $request->input('nome_categoria');
+            $categoria->save();
+        }
+        return redirect('/categorias');
     }
 
 
-    public function destroy(Categorias $categorias)
+    public function destroy($id)
     {
-        //
+        $categoria = Categorias::find($id);
+        if (isset($categoria)){
+            $categoria->delete();
+        }
+        return redirect('/categorias');
     }
 }

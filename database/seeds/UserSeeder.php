@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
             'email' => "admin@admin.com",
             'password' => bcrypt('admin'),
             'loja_id' => 1,
-
         ]);
     }
 }
