@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categorias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriasController extends Controller
 {
@@ -23,8 +24,9 @@ class CategoriasController extends Controller
 
     public function store(Request $request)
     {
-
         $categoria = new categorias($request->all());
+        $categoriaId = Auth::user()->loja_id;
+        $categoriaId;
         $categoria->save();
         return redirect('/categorias');
     }

@@ -27,14 +27,10 @@
                 <td>{{$loja->nome}}</td>
                 <td>{{$loja->descricao}}</td>
                 <td>
-			<span class="btn btn-warning btn-xs">
-				<span class="fas fa-edit"></span>
-			</span>
+                    <a href="{{ route('lojas.edit', $loja->id) }}" class="btn btn-sm btn-warning">Editar</a>
                 </td>
                 <td>
-			<span class="btn btn-danger btn-xs">
-				<span class="fas fa-trash"></span>
-			</span>
+                    <a href="lojas/apagar/{{$loja->id}}" class="btn btn-sm btn-danger">Apagar</a>
                 </td>
             </tr>
 @endforeach

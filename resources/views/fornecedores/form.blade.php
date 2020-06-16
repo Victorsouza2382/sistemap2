@@ -22,7 +22,6 @@
                         <button type="submit" class="btn btn-primary pull-right" >Adicionar</button>
                     </div>
                 </form>
-                </form>
             </div>
         </div>
     </div>
@@ -33,21 +32,16 @@
 
 
         $(function () {
-
             $('#cep').change(function () {
                 cep = $('#cep').val()
-
 
                 $.ajax({
                     url: 'https://viacep.com.br/ws/' + cep + '/json/',
                     success: function (dados) {
                         $('#endereco').val(dados.logradouro)
-
                     }
-
                 })
             })
-
         });
     </script>
     @endsection

@@ -35,19 +35,34 @@ class LojasController extends Controller
     }
 
 
-    public function edit(Lojas $lojas)
+    public function edit($id)
     {
-        //
+        $lojas = Lojas::find($id);
+        if (isset($lojas)){
+            return view('/lojas.edit', compact('lojas'));
+        }
+        return redirect('/lojas');
     }
 
-    public function update(Request $request, Lojas $lojas)
+
+    public function update(Request $request, $id)
     {
-        //
+        $lojas = Lojas::find($id);
+        if (isset($lojas)){
+            $lojas->nome = $request->input('nome');
+            $lojas->sobrenome = $request->input('descricao');
+            $lojas->save();
+        }
+        return redirect('/lojas');
     }
 
 
-    public function destroy(Lojas $lojas)
+    public function destroy($id)
     {
-        //
+        $lojas = Lojas::find($id);
+        if (isset($lojas)){
+            $lojas->delete();
+        }
+        return redirect('/lojas');
     }
 }

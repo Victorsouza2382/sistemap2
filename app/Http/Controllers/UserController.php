@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -23,6 +24,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User($request->all());
+        $user->loja_id = Auth::user()->loja_id;
         $user->save();
         return redirect('/usuarios');
     }
@@ -33,37 +35,35 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        if (isset($user)){
+            return view('/usuarios.edit', compact('user'));
+        }
+        return redirect('/usuarios');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        if (isset($user)){
+            $user->nome = $request->input('name');
+            $user->sobrenome = $request->input('email');
+            $user->save();
+        }
+        return redirect('/usuarios');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        if (isset($user)){
+            $user->delete();
+        }
+        return redirect('/usuarios');
     }
 }

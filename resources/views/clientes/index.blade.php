@@ -34,10 +34,10 @@
             <td>{{$cliente->telefone}}</td>
             <td>{{$cliente->cpf}}</td>
             <td>
-                <a href="categorias/editar/{{$cliente->id}}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-sm btn-warning">Editar</a>
             </td>
             <td>
-                <a href="categorias/apagar/{{$cliente->id}}" class="btn btn-sm btn-danger">Apagar</a>
+                <a href="clientes/apagar/{{$cliente->id}}" class="btn btn-sm btn-danger">Apagar</a>
             </td>
         </tr>
         @endforeach

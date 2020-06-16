@@ -33,10 +33,10 @@
                     <td>{{$fornecedor->telefone}}</td>
                     <td>{{$fornecedor->cpf}}</td>
                     <td>
-                        <a href="categorias/editar/{{$fornecedor->id}}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{{ route('fornecedores.edit', $fornecedor->id) }}" class="btn btn-sm btn-warning">Editar</a>
                     </td>
                     <td>
-                        <a href="categorias/apagar/{{$fornecedor->id}}" class="btn btn-sm btn-danger">Apagar</a>
+                        <a href="fornecedores/apagar/{{$fornecedor->id}}" class="btn btn-sm btn-danger">Apagar</a>
                     </td>
                 </tr>
             @endforeach

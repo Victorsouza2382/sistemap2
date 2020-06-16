@@ -26,15 +26,11 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->lojas->nome}}</td>
-                <td><br>
-                    <span class="btn btn-warning btn-xs">
-				    <span class="fas fa-edit"></span>
-			        </span>
+               <td>
+                    <a href="{{ route('usuarios.edit', $user->id) }}" class="btn btn-sm btn-warning">Editar</a>
                 </td>
-                <td><br>
-                    <span class="btn btn-danger btn-xs">
-				<span class="fas fa-trash"></span>
-			        </span>
+                <td>
+                    <a href="usuarios/apagar/{{$user->id}}" class="btn btn-sm btn-danger">Apagar</a>
                 </td>
             </tr>
         @endforeach

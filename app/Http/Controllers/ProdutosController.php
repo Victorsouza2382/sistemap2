@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Produtos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProdutosController extends Controller
 {
@@ -27,11 +28,13 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
-
         $produto = new produtos($request->all());
+        $produto->loja_id = Auth::user()->loja_id;
+
 
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
             $aValidos =[
+
                 'image/jpeg',
                 'image/png',
                 'image/gif',
@@ -47,46 +50,39 @@ class ProdutosController extends Controller
         return redirect('/produtos');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Produtos $produtos
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Produtos $produtos)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Produtos $produtos
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Produtos $produtos)
+
+    public function edit($id)
     {
-        //
+        $produto = Produtos::find($id);
+        if (isset($produto)){
+            return view('/produtos.edit', compact('produto'));
+        }
+        return redirect('/produtos');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Produtos $produtos
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Produtos $produtos)
+
+    public function update(Request $request, $id)
     {
-        //
+        $produto = Produtos::find($id);
+        if (isset($produto)){
+            $produto->nome = $request->input('nome');
+            $produto->descricao = $request->input('descricao');
+            $produto->quantidade = $request->input('quantidade');
+            $produto->preco = $request->input('preco');
+            $produto->imagem = $request->input('imagem');
+            $produto->categoria = $request->input('categoria');
+            $produto->save();
+        }
+        return redirect('/produtos');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Produtos $produtos
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $produto = Produtos::find($id);

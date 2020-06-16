@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Clientes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientesController extends Controller
 {
@@ -24,6 +25,7 @@ class ClientesController extends Controller
     {
 
         $cliente = new clientes($request->all());
+        $cliente->loja_id = Auth::user()->loja_id;
         $cliente->save();
         return redirect('/clientes');
     }
@@ -39,38 +41,37 @@ class ClientesController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Clientes  $clientes
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Clientes $clientes)
+
+    public function edit($id)
     {
-        //
+        $cliente = Clientes::find($id);
+        if (isset($cliente)){
+            return view('/clientes.edit', compact('cliente'));
+        }
+        return redirect('/clientes');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Clientes  $clientes
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Clientes $clientes)
+
+    public function update(Request $request,$id)
     {
-        //
+        $cliente = Clientes::find($id);
+        if (isset($cliente)){
+            $cliente->nome = $request->input('nome');
+            $cliente->sobrenome = $request->input('sobrenome');
+            $cliente->cep = $request->input('cep');
+            $cliente->endereco = $request->input('endereco');
+            $cliente->email = $request->input('email');
+            $cliente->telefone = $request->input('telefone');
+            $cliente->cpf = $request->input('cpf');
+            $cliente->save();
+        }
+        return redirect('/clientes');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Clientes  $clientes
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        $cliente = Categorias::find($id);
+        $cliente = Clientes::find($id);
         if (isset( $cliente)){
             $cliente->delete();
         }

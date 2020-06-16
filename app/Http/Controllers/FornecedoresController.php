@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Fornecedores;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FornecedoresController extends Controller
 {
@@ -25,6 +26,7 @@ class FornecedoresController extends Controller
     {
 
         $fornecedor = new Fornecedores($request->all());
+        $fornecedor->loja_id = Auth::user()->loja_id;
         $fornecedor->save();
         return redirect('/fornecedores');
     }
@@ -36,35 +38,34 @@ class FornecedoresController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Fornecedores  $fornecedores
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Fornecedores $fornecedores)
+
+    public function edit($id)
     {
-        //
+        $fornecedor = Fornecedores::find($id);
+        if (isset($fornecedor)){
+            return view('/fornecedores.edit', compact('fornecedor'));
+        }
+        return redirect('/fornecedores');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Fornecedores  $fornecedores
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Fornecedores $fornecedores)
+
+    public function update(Request $request, $id)
     {
-        //
+        $fornecedor = Fornecedores::find($id);
+        if (isset($fornecedor)){
+            $fornecedor->nome = $request->input('nome');
+            $fornecedor->sobrenome = $request->input('sobrenome');
+            $fornecedor->cep = $request->input('cep');
+            $fornecedor->endereco = $request->input('endereco');
+            $fornecedor->email = $request->input('email');
+            $fornecedor->telefone = $request->input('telefone');
+            $fornecedor->cpf = $request->input('cpf');
+            $fornecedor->save();
+        }
+        return redirect('/fornecedores');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Fornecedores  $fornecedores
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $fornecedor = Fornecedores::find($id);
