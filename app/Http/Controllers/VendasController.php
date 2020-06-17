@@ -34,37 +34,29 @@ class VendasController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Vendas  $vendas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Vendas $vendas)
+
+    public function edit($id)
+    {
+        $venda = Vendas::find($id);
+        if (isset($venda)){
+            return view('/vendas.edit', compact('venda'));
+        }
+        return redirect('/vendas');
+    }
+
+
+    public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Vendas  $vendas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Vendas $vendas)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Vendas  $vendas
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Vendas $vendas)
+    public function destroy($id)
     {
-        //
+        $venda = Vendas::find($id);
+        if (isset($venda)) {
+            $venda->delete();
+        }
+        return redirect('/vendas');
     }
 }

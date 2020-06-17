@@ -24,7 +24,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User($request->all());
-        $user->loja_id = Auth::user()->loja_id;
+        $user->loja_id = Auth::user()->loja_id; // $request->loja_id
+        $user->password = bcrypt($request->password);
         $user->save();
         return redirect('/usuarios');
     }
@@ -50,8 +51,10 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (isset($user)){
-            $user->nome = $request->input('name');
-            $user->sobrenome = $request->input('email');
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+//            $user->loja_id = Auth::user()->loja_id; // $request->loja_id
+            $user->password = bcrypt($request->password);
             $user->save();
         }
         return redirect('/usuarios');

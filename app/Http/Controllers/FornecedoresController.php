@@ -65,7 +65,6 @@ class FornecedoresController extends Controller
         return redirect('/fornecedores');
     }
 
-
     public function destroy($id)
     {
         $fornecedor = Fornecedores::find($id);
@@ -73,5 +72,36 @@ class FornecedoresController extends Controller
             $fornecedor->delete();
         }
         return redirect('/fornecedores');
+    }
+
+
+    public function verificaEmailFornecedores(Request $request)
+    {
+        if(Fornecedores::where('email', '=', $request->email)->first()) {
+            return array(
+                "response" => "erro",
+                "descricao" => "E-mail já existente !",
+            );
+        } else {
+            return array(
+                "response" => "sucesso",
+                "descricao" => "",
+            );
+        }
+    }
+
+    public function verificaCPFFornecedores(Request $request)
+    {
+        if(Fornecedores::where('cpf', '=', $request->cpf)->first()) {
+            return array(
+                "response" => "erro",
+                "descricao" => "CPF já existente !",
+            );
+        } else {
+            return array(
+                "response" => "sucesso",
+                "descricao" => "",
+            );
+        }
     }
 }

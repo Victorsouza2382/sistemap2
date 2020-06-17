@@ -23,8 +23,6 @@
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>
 
-
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -106,27 +104,29 @@
                         <li><a href="/vendas"><i class="fa fa-circle-o"></i> Vendas</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fas fa-store-alt fa-1x"></i>
-                        <span>Filiais</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/lojas"><i class="fa fa-circle-o"></i> Lojas</a></li>
+                @if(!!auth()->user()->is_admin)
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fas fa-store-alt fa-1x"></i>
+                            <span>Filiais</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/lojas"><i class="fa fa-circle-o"></i> Lojas</a></li>
 
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
 
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-folder"></i> <span>Login</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/usuarios"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                    </ul>
-                </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i> <span>Login</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/usuarios"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                        </ul>
+                    </li>
+                @endif
             </ul>
         </section>
     </aside>
@@ -158,11 +158,8 @@
                                 <div class="col-md-12">
                                     <!--Conteudo-->
                                 @yield('conteudo')
-
                                 <!--Fim Conteudo-->
-
                                 </div>
-
                             </div>
                         </div><!-- /.box -->
                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Produtos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProdutosController extends Controller
 {
@@ -15,7 +16,12 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        $produtos = produtos::all();
+        $produtos = DB::table('produtos as p')
+            ->select(['p.*', 'c.nome_categoria'])
+            ->join('categorias as c', 'c.id', '=', 'p.categoria_id')
+            ->get()
+        ;
+
         return view('produtos.index', compact('produtos'));
     }
 
@@ -60,7 +66,7 @@ class ProdutosController extends Controller
     public function edit($id)
     {
         $produto = Produtos::find($id);
-        if (isset($produto)){
+        if (isset($produto)) {
             return view('/produtos.edit', compact('produto'));
         }
         return redirect('/produtos');
@@ -90,5 +96,17 @@ class ProdutosController extends Controller
             $produto->delete();
         }
         return redirect('/produtos');
+    }
+
+    public function produtosAjax()
+    {
+        $select = Produtos::orderBy('nome', 'ASC')->get();
+        return $select;
+    }
+
+    public function carregaDetalhesProduto(Request $request)
+    {
+        $select = Produtos::find($request->produto_id);
+        return $select;
     }
 }

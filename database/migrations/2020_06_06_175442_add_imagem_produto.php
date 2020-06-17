@@ -14,7 +14,6 @@ class AddImagemProduto extends Migration
         });
     }
 
-
     public function down()
     {
         Schema::table('produtos', function (Blueprint $table) {

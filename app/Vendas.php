@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vendas extends Model
 {
-    protected  $fillable = ['id', 'quantidade', 'preco', 'total_venda', 'dataCompra'];
+    protected  $fillable = [
+        'id', 'quantidade', 'preco',
+        'cliente_id', 'produto_id'
+    ];
 }

@@ -22,8 +22,10 @@
                     <tr>
                         <td>Código</td>
                         <td>Data</td>
+                        <td>Produto</td>
                         <td>Cliente</td>
-                        <td>Valor da Compra</td>
+                        <td>Preço</td>
+                        <td>Quantidade Vendida</td>
                     </tr>
                     </thead>
                     <tdbody>
@@ -31,8 +33,10 @@
                     <tr>
                         <td>{{$venda->id}}</td>
                         <td>{{$venda->created_at}}</td>
-                        <td>{{$venda->cliente_id->nome}}</td>
-                        <td>{{$venda->total_venda}}</td>
+                        <td>{{$venda->produto_id}}</td>
+                        <td>{{$venda->cliente_id}}</td>
+                        <td>{{$venda->preco}}</td>
+                        <td>{{$venda->quantidade}}</td>
                     </tr>
                         @endforeach
                     </tdbody>

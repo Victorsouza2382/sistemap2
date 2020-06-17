@@ -66,4 +66,10 @@ class CategoriasController extends Controller
         }
         return redirect('/categorias');
     }
+
+    public function categoriasAjax()
+    {
+        $select = Categorias::orderBy('nome_categoria', 'ASC')->get();
+        return $select;
+    }
 }

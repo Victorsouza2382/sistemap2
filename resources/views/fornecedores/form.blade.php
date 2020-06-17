@@ -3,7 +3,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <form action="/fornecedores" method="post">@csrf
+                <form action="/fornecedores" method="post">
+                    @csrf
                     <label for="nome">nome</label>
                     <input type="text" class="form-control" id="nome" name="nome"  style="width: 150%">
                     <label for="sobrenome">sobrenome</label>
@@ -29,8 +30,6 @@
 
 @section('js')
     <script>
-
-
         $(function () {
             $('#cep').change(function () {
                 cep = $('#cep').val()
@@ -41,7 +40,35 @@
                         $('#endereco').val(dados.logradouro)
                     }
                 })
-            })
+            });
+
+
+            $("#email").change(function () {
+                $.post(
+                    "/verificaEmailFornecedor", {
+                        "email": $(this).val(),
+                        "_token": "{{ csrf_token() }}",
+                    }).done(function (data) {
+                    if (data.response == 'erro') {
+                        alert(data.descricao);
+                        $("#email").val("");
+                        $("#email").focus();
+                    }
+                });
+            });
+            $("#cpf").change(function () {
+                $.post(
+                    "/verificaCPFFornecedor", {
+                        "cpf": $(this).val(),
+                        "_token": "{{ csrf_token() }}",
+                    }).done(function (data) {
+                    if (data.response == 'erro') {
+                        alert(data.descricao);
+                        $("#cpf").val("");
+                        $("#cpf").focus();
+                    }
+                });
+            });
         });
     </script>
-    @endsection
+@endsection

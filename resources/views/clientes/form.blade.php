@@ -30,7 +30,6 @@
 @section('js')
     <script>
 
-
         $(function () {
 
             $('#cep').change(function () {
@@ -48,12 +47,34 @@
             })
 
         });
+
+        $("#email").change(function () {
+            $.post(
+                "/verificaEmailCliente", {
+                    "email": $(this).val(),
+                    "_token": "{{ csrf_token() }}",
+                }).done(function (data) {
+                    if (data.response == 'erro') {
+                        alert(data.descricao);
+                        $("#email").val("");
+                        $("#email").focus();
+                    }
+            });
+        });
+        $("#cpf").change(function () {
+            $.post(
+                "/verificaCPFCliente", {
+                    "cpf": $(this).val(),
+                    "_token": "{{ csrf_token() }}",
+                }).done(function (data) {
+                    if (data.response == 'erro') {
+                        alert(data.descricao);
+                        $("#cpf").val("");
+                        $("#cpf").focus();
+                    }
+            });
+        });
+
     </script>
 
 @endsection
-
-
-
-
-
-

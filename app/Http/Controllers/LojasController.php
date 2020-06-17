@@ -50,7 +50,7 @@ class LojasController extends Controller
         $lojas = Lojas::find($id);
         if (isset($lojas)){
             $lojas->nome = $request->input('nome');
-            $lojas->sobrenome = $request->input('descricao');
+            $lojas->descricao = $request->input('descricao');
             $lojas->save();
         }
         return redirect('/lojas');

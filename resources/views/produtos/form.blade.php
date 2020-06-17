@@ -11,9 +11,7 @@
                     <textarea type="text" class="form-control input-sm" id="descricao" name="descricao" rows="3"
                               cols="20" style="width: 135%"></textarea>
                     <label>Categoria</label>
-                    <select class="form-control input-sm" id="categoriaSelect" name="categoriaSelect"
-                            style="width: 50%">
-                        <option value="A">Selecionar Categoria</option>
+                    <select required name="categoria_id" id="categoria_id" class="form-control">
                     </select>
                     <label>Quantidade</label>
                     <input type="number" class="form-control input-sm" id="quantidade" name="quantidade"
@@ -29,4 +27,21 @@
         </div>
     </div>
 
+@endsection
+@section('js')
+    <script>
+        $(function () {
+            $.ajax({
+                url: "/categoriasAjax",
+                type: "GET",
+            }).done(function (response) {
+                $("#categoria_id").empty();
+                $("#categoria_id").append('<option value="">Selecione</option>');
+                response.forEach(function (key) {
+                    $("#categoria_id").append("<option value='" + key.id + "'>" + key.nome_categoria + "</option>");
+                    $("#categoria_id").removeAttr("disabled");
+                });
+            });
+        });
+    </script>
 @endsection
